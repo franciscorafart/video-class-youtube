@@ -13,7 +13,9 @@
               "because c",
               "because d"
           ],
-          "correct": 0
+          "correct": 0,
+          "correct_sec": 10,
+          "incorrect_sec": 0
       },
       {
           "question":"Why is blah blah blah?",
@@ -23,7 +25,9 @@
               "because c",
               "because d"
           ],
-          "correct": 2
+          "correct": 2,
+          "correct_sec": 20,
+          "incorrect_sec": 10
       },
       {
           "question":"Why is blah blah blah?",
@@ -33,7 +37,9 @@
               "because c",
               "because d"
           ],
-          "correct": 1
+          "correct": 1,
+          "correct_sec": 30,
+          "incorrect_sec": 20
       },
       {
           "question":"Why is blah blah blah?",
@@ -43,7 +49,9 @@
               "because c",
               "because d"
           ],
-          "correct": 3
+          "correct": 3,
+          "correct_sec": 40,
+          "incorrect_sec": 30
       }
   ]
 }
