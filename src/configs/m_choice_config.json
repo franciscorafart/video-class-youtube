@@ -1,0 +1,49 @@
+{
+  "name": "video-class",
+  "srcapi": "https://www.youtube.com/iframe_api",
+  "height": "360",
+  "width": "640",
+  "videoId": "M7lc1UVf-VE",
+  "questions": [
+      {
+          "question":"Why is blah blah blah?",
+          "alternatives": [
+              "because a",
+              "because b",
+              "because c",
+              "because d"
+          ],
+          "correct": 0
+      },
+      {
+          "question":"Why is blah blah blah?",
+          "alternatives": [
+              "because a",
+              "because b",
+              "because c",
+              "because d"
+          ],
+          "correct": 2
+      },
+      {
+          "question":"Why is blah blah blah?",
+          "alternatives": [
+              "because a",
+              "because b",
+              "because c",
+              "because d"
+          ],
+          "correct": 1
+      },
+      {
+          "question":"Why is blah blah blah?",
+          "alternatives": [
+              "because a",
+              "because b",
+              "because c",
+              "because d"
+          ],
+          "correct": 3
+      }
+  ]
+}
