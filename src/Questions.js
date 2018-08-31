@@ -20,9 +20,9 @@ class Questions extends Component {
     handleAnswer(e){
         if (e === this.currentQuestion.correct){
             console.log("correct answer!")
-            this.props.startVideoFrom(true)
+            this.props.handleCorrect(true)
         } else {
-            this.props.startVideoFrom(false)
+            this.props.handleCorrect(false)
         }
     }
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Questions from './Questions'
+import Controls from './Controls'
 import config from './configs/m_choice_config.json'
 import './App.css';
 
@@ -9,6 +10,7 @@ class VideoPlayer extends Component {
         super(props)
         this.player = null
         this.timedListener = null
+        this.correct_answer = false
 
         const script = document.createElement("script");
         script.src = config.srcapi;
@@ -18,7 +20,8 @@ class VideoPlayer extends Component {
         this.state = {
             done: false,
             question: 0,
-            display_question: false
+            display_question: false,
+            display_control: false
         }
         //Bind here
         this.onPlayerReady = this.onPlayerReady.bind(this)
@@ -27,15 +30,17 @@ class VideoPlayer extends Component {
         this.pauseVideo = this.pauseVideo.bind(this)
         this.checkTime = this.checkTime.bind(this)
         this.startVideoFrom = this.startVideoFrom.bind(this)
+        this.handleCorrect = this.handleCorrect.bind(this)
     }
 
     componentDidMount () {
+
         window['onYouTubeIframeAPIReady'] = (e) => {
             this.YT = window['YT'];
             this.reframed = false;
             this.player = new window['YT'].Player('player', {
-                height: config.height,
-                width: config.weight,
+                height: "360",
+                width: "640",
                 videoId: config.videoId,
                 events: {
                     'onReady': this.onPlayerReady,
@@ -44,13 +49,12 @@ class VideoPlayer extends Component {
             })
         }
 
-        this.timedListener = setInterval(this.checkTime, 1000)
+        // this.timedListener = setInterval(this.checkTime, 1000)
     }
 
     onPlayerStateChange(e){
         if (e.data === window['YT'].PlayerState.PLAYING && !this.state.done){
             // setTimeout(this.stopVideo, 6000)
-            // this.setState({done: true})
             console.log('On player state change!')
         }
     }
@@ -78,12 +82,21 @@ class VideoPlayer extends Component {
         //2. If so, pause video and display component
     }
 
-    startVideoFrom(correct){
+    handleCorrect(correct){
+        this.correct_answer = correct
+
+        this.setState({
+            display_question: false,
+            display_control: true
+        })
+    }
+
+    startVideoFrom(){
         //extract correct and incorrect time
         let sec = null
         let nextQuestion = this.state.question
 
-        if (correct){
+        if (this.correct_answer){
             sec = config.questions[this.state.question].correct_sec
             nextQuestion+=1
         }
@@ -98,29 +111,37 @@ class VideoPlayer extends Component {
             this.player.playVideo()
             this.timedListener = setInterval(this.checkTime, 1000)
 
-
             this.setState({
                 question: nextQuestion,
-                display_question: false
+                display_control: false
             })
+            //reset correct answer
+            this.correct_answer = false
         }
     }
 
     onPlayerReady(e){
         e.target.seekTo(0, true)
         e.target.playVideo()
+        this.timedListener = setInterval(this.checkTime, 1000)
     }
 
   render() {
-      let questions = <Questions questionNum={this.state.question} startVideoFrom={this.startVideoFrom}></Questions>
-      let congrats = <div>Congratulations!!</div>
+      let controlsText = ''
+      this.correct_answer? controlsText = "continue with video":controlsText="re-watch previous section"
 
+      let questions = <Questions questionNum={this.state.question} handleCorrect={this.handleCorrect}></Questions>
+      let congrats = <div>Congratulations!!</div>
+      let controls = <Controls startVideoFrom={this.startVideoFrom} text={controlsText}/>
     return (
       <div>
           <div id="player"></div>
           {
               this.state.display_question === true?
-                questions:console.log('true')
+              questions:null
+          }
+          {
+              this.state.display_control === true? controls: null
           }
           {
               this.state.done===true? congrats:null
