@@ -58,17 +58,9 @@ body {
 header {
 
 }
-.section {
-    min-height: 400px;
-    width: 100%;
-    border: 1px solid black;
-    padding: 20px;
-}
-.centered {
-    align-content: center;
-}
 
 footer {
+
 
 }
 
@@ -80,6 +72,8 @@ footer {
 header{
   height: 100px;
   border: 1px solid black;
+
+
 }
 header + section{
   height: 200px;
@@ -103,6 +97,18 @@ li{
   margin-left: 2%;
   border: 1px solid black;
   float: left;
+}
+#ham{
+  float: right;
+  display: none;
+}
+section.mid{
+  height: 200px;
+  width: 30%;
+  margin: 1.5%;
+  border: 1px solid black;
+  float: left;
+  background: yellow;
 }
 
 @media (min-width:768px) and (max-width:960px){

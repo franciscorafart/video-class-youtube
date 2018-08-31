@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Questions from './Questions'
 import Controls from './Controls'
+import UserMessage from './UserMessage'
 import config from './configs/m_choice_config.json'
 import './App.css';
 
@@ -11,6 +12,7 @@ class VideoPlayer extends Component {
         this.player = null
         this.timedListener = null
         this.correct_answer = false
+        this.controlsText = 'start video'
 
         const script = document.createElement("script");
         script.src = config.srcapi;
@@ -21,7 +23,8 @@ class VideoPlayer extends Component {
             done: false,
             question: 0,
             display_question: false,
-            display_control: false
+            display_control: true,
+            initial:true
         }
         //Bind here
         this.onPlayerReady = this.onPlayerReady.bind(this)
@@ -49,7 +52,6 @@ class VideoPlayer extends Component {
             })
         }
 
-        // this.timedListener = setInterval(this.checkTime, 1000)
     }
 
     onPlayerStateChange(e){
@@ -68,18 +70,14 @@ class VideoPlayer extends Component {
     }
 
     checkTime(){
-        //TODO: 1.evaluate if time elapsed is >= than current answer sec
         let upperBound = config.questions[this.state.question].correct_sec
         let current = this.player.getCurrentTime()
-        console.log(current)
+
         if(current >= upperBound){
             this.pauseVideo()
             clearInterval(this.timedListener)
             this.setState({display_question: true})
         }
-
-
-        //2. If so, pause video and display component
     }
 
     handleCorrect(correct){
@@ -102,7 +100,7 @@ class VideoPlayer extends Component {
         }
         else
             sec = config.questions[this.state.question].incorrect_sec
-
+        console.log('sec', sec, 'nextQuestion',nextQuestion)
         if (nextQuestion >= config.questions.length){
             this.stopVideo()
             this.setState({done: true})
@@ -113,7 +111,8 @@ class VideoPlayer extends Component {
 
             this.setState({
                 question: nextQuestion,
-                display_control: false
+                display_control: false,
+                initial: false
             })
             //reset correct answer
             this.correct_answer = false
@@ -122,31 +121,41 @@ class VideoPlayer extends Component {
 
     onPlayerReady(e){
         e.target.seekTo(0, true)
-        e.target.playVideo()
-        this.timedListener = setInterval(this.checkTime, 1000)
+        this.pauseVideo()
+        // e.target.playVideo()
+        // this.timedListener = setInterval(this.checkTime, 1000)
     }
 
   render() {
-      let controlsText = ''
-      this.correct_answer? controlsText = "continue with video":controlsText="re-watch previous section"
+      let mess;
+      if(this.correct_answer){
+          this.controlsText = "continue with video";
+          this.state.done? mess='d': mess='c'
+      } else {
+          this.controlsText="re-watch previous section"
+          mess='i'
+      }
 
       let questions = <Questions questionNum={this.state.question} handleCorrect={this.handleCorrect}></Questions>
-      let congrats = <div>Congratulations!!</div>
-      let controls = <Controls startVideoFrom={this.startVideoFrom} text={controlsText}/>
+      let congrats = <UserMessage mess={mess}/>
+      let controls = <Controls startVideoFrom={this.startVideoFrom} text={this.controlsText} initial={this.state.initial}/>
     return (
       <div>
-          <div id="player"></div>
-          {
-              this.state.display_question === true?
-              questions:null
-          }
-          {
-              this.state.display_control === true? controls: null
-          }
-          {
-              this.state.done===true? congrats:null
-          }
-
+          <div className="section">
+              <div id="player" className="centered"></div>
+          </div>
+          <div className="controlsContainer section">
+              {
+                  this.state.display_question === true?
+                  questions:null
+              }
+              {
+                  this.state.display_control === true? controls: null
+              }
+              {
+                  this.state.done===true? congrats:null
+              }
+          </div>
       </div>
     );
   }
