@@ -8,48 +8,48 @@
       {
           "question":"Why is blah blah blah?",
           "alternatives": [
-              "because a",
-              "because b",
-              "because c",
-              "because d"
+              {"text":"because a", "id":"first"},
+              {"text":"because b", "id":"second"},
+              {"text":"because c", "id":"third"},
+              {"text":"because d", "id":"fourth"}
           ],
-          "correct": 0,
-          "correct_sec": 100,
+          "correct": "first",
+          "correct_sec": 10,
           "incorrect_sec": 0
       },
       {
           "question":"Why is blah blah blah?",
           "alternatives": [
-              "because a",
-              "because b",
-              "because c",
-              "because d"
+              {"text":"because a", "id":"first"},
+              {"text":"because b", "id":"second"},
+              {"text":"because c", "id":"third"},
+              {"text":"because d", "id":"fourth"}
           ],
-          "correct": 2,
+          "correct": "second",
           "correct_sec": 20,
           "incorrect_sec": 10
       },
       {
           "question":"Why is blah blah blah?",
           "alternatives": [
-              "because a",
-              "because b",
-              "because c",
-              "because d"
+              {"text":"because a", "id":"first"},
+              {"text":"because b", "id":"second"},
+              {"text":"because c", "id":"third"},
+              {"text":"because d", "id":"fourth"}
           ],
-          "correct": 1,
+          "correct": "third",
           "correct_sec": 30,
           "incorrect_sec": 20
       },
       {
           "question":"Why is blah blah blah?",
           "alternatives": [
-              "because a",
-              "because b",
-              "because c",
-              "because d"
+              {"text":"because a", "id":"first"},
+              {"text":"because b", "id":"second"},
+              {"text":"because c", "id":"third"},
+              {"text":"because d", "id":"fourth"}
           ],
-          "correct": 3,
+          "correct": "fourth",
           "correct_sec": 40,
           "incorrect_sec": 30
       }

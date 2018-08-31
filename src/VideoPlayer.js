@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Questions from './Questions'
 import config from './configs/m_choice_config.json'
 import './App.css';
 
@@ -46,10 +47,6 @@ class VideoPlayer extends Component {
         this.timedListener = setInterval(this.checkTime, 1000)
     }
 
-    onPlayerReady(e){
-        e.target.playVideo();
-    }
-
     onPlayerStateChange(e){
         if (e.data === window['YT'].PlayerState.PLAYING && !this.state.done){
             // setTimeout(this.stopVideo, 6000)
@@ -73,6 +70,7 @@ class VideoPlayer extends Component {
         console.log(current)
         if(current >= upperBound){
             this.pauseVideo()
+            clearInterval(this.timedListener)
             this.setState({display_question: true})
         }
 
@@ -80,16 +78,42 @@ class VideoPlayer extends Component {
         //2. If so, pause video and display component
     }
 
-    startVideoFrom(sec){
-        this.player.playVideoAt(sec)
+    startVideoFrom(correct){
+        //extract correct and incorrect time
+        let sec = null
+        let nextQuestion = this.state.question
+
+        if (correct){
+            sec = config.questions[this.state.question].correct_sec
+            nextQuestion+=1
+        }
+        else
+            sec = config.questions[this.state.question].incorrect_sec
+
+        if (nextQuestion >= config.questions.length){
+            this.stopVideo()
+            this.setState({done: true})
+        } else{
+            this.player.seekTo(sec, true)
+            this.player.playVideo()
+            this.timedListener = setInterval(this.checkTime, 1000)
+
+
+            this.setState({
+                question: nextQuestion,
+                display_question: false
+            })
+        }
     }
 
-    //NOTE: useful methods
-    //player.seekTo(seconds:Number, allowSeekAhead:Boolean)
-    //player.playVideoAt(index:Number)
+    onPlayerReady(e){
+        e.target.seekTo(0, true)
+        e.target.playVideo()
+    }
 
   render() {
-      let questions = <div>Questions and Answers</div>
+      let questions = <Questions questionNum={this.state.question} startVideoFrom={this.startVideoFrom}></Questions>
+      let congrats = <div>Congratulations!!</div>
 
     return (
       <div>
@@ -97,6 +121,9 @@ class VideoPlayer extends Component {
           {
               this.state.display_question === true?
                 questions:console.log('true')
+          }
+          {
+              this.state.done===true? congrats:null
           }
 
       </div>
