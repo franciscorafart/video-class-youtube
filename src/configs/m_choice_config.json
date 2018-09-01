@@ -6,52 +6,76 @@
   "videoId": "M7lc1UVf-VE",
   "questions": [
       {
-          "question":"Why is blah blah blah?",
+          "question":"How many laws of great singing are there?",
           "alternatives": [
-              {"text":"because a", "id":"first"},
-              {"text":"because b", "id":"second"},
-              {"text":"because c", "id":"third"},
-              {"text":"because d", "id":"fourth"}
+              {"text":"3", "id":"first"},
+              {"text":"5", "id":"second"},
+              {"text":"25", "id":"third"},
+              {"text":"1000", "id":"fourth"}
           ],
-          "correct": "first",
-          "correct_sec": 10,
+          "correct": "second",
+          "correct_sec": 8,
           "incorrect_sec": 0
       },
       {
-          "question":"Why is blah blah blah?",
+          "question":"What is support?",
           "alternatives": [
-              {"text":"because a", "id":"first"},
-              {"text":"because b", "id":"second"},
-              {"text":"because c", "id":"third"},
-              {"text":"because d", "id":"fourth"}
-          ],
-          "correct": "second",
-          "correct_sec": 20,
-          "incorrect_sec": 10
-      },
-      {
-          "question":"Why is blah blah blah?",
-          "alternatives": [
-              {"text":"because a", "id":"first"},
-              {"text":"because b", "id":"second"},
-              {"text":"because c", "id":"third"},
-              {"text":"because d", "id":"fourth"}
+              {"text":"Your feet", "id":"first"},
+              {"text":"The ground", "id":"second"},
+              {"text":"Your abdominal cavity", "id":"third"},
+              {"text":"The diaphram", "id":"fourth"}
           ],
           "correct": "third",
-          "correct_sec": 30,
-          "incorrect_sec": 20
+          "correct_sec": 42,
+          "incorrect_sec": 8
       },
       {
-          "question":"Why is blah blah blah?",
+          "question":"How do you grow your voice sound?",
           "alternatives": [
-              {"text":"because a", "id":"first"},
-              {"text":"because b", "id":"second"},
-              {"text":"because c", "id":"third"},
-              {"text":"because d", "id":"fourth"}
+              {"text":"With a big AHH", "id":"first"},
+              {"text":"By stepping on a chair", "id":"second"},
+              {"text":"With a microphone", "id":"third"},
+              {"text":"With open throat techniche", "id":"fourth"}
           ],
           "correct": "fourth",
-          "correct_sec": 40,
-          "incorrect_sec": 30
+          "correct_sec": 93,
+          "incorrect_sec": 42
+      },
+      {
+          "question":"How can you still have power while doing air control?",
+          "alternatives": [
+              {"text":"Use your hands as amplifiers", "id":"first"},
+              {"text":"Let resonance do the work", "id":"second"},
+              {"text":"Drink a red bull before singing", "id":"third"},
+              {"text":"Have a power nap before singing", "id":"fourth"}
+          ],
+          "correct": "second",
+          "correct_sec": 123,
+          "incorrect_sec": 93
+      },
+      {
+          "question":"Why is relaxing important?",
+          "alternatives": [
+              {"text":"Nobody likes working with stressed divas", "id":"first"},
+              {"text":"So that your diaphram can control your air properly", "id":"second"},
+              {"text":"So you look cool singing on stage", "id":"third"},
+              {"text":"Because Ken Tamplin says so", "id":"fourth"}
+          ],
+          "correct": "second",
+          "correct_sec": 169,
+          "incorrect_sec": 123
+      },
+      {
+          "question":"Why don't we hit the proper notes?",
+          "alternatives": [
+              {"text":"Because we don't know how to sing", "id":"first"},
+              {"text":"Because we're tone deaf", "id":"second"},
+              {"text":"What's a note?", "id":"third"},
+              {"text":"Not relaxing and overthinking the notes", "id":"fourth"}
+          ],
+          "correct": "fourth",
+          "correct_sec": 202,
+          "incorrect_sec": 169
       }
   ]
 }

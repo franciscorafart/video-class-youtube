@@ -44,7 +44,9 @@ class VideoPlayer extends Component {
             this.player = new window['YT'].Player('player', {
                 height: "360",
                 width: "640",
-                videoId: config.videoId,
+                playerVars: {autoplay: 0, 'controls': 0 },
+                origin: 'https://youtu.be/MengvWW7lgw',
+                videoId: 'MengvWW7lgw',
                 events: {
                     'onReady': this.onPlayerReady,
                     'onStateChange': this.onPlayerStateChange
