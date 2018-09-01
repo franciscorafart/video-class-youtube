@@ -19,11 +19,14 @@ class UserMessage extends Component {
             case 'd':
                 message = "Congratulations! You've completed this unit";
                 break;
+            case 'in':
+                message = "Welcome to the online course!";
+                break;
             default: message = ''
         }
 
         return(
-            <div>{message}</div>
+            <div className="userMessage centered">{message}</div>
         )
     }
 }

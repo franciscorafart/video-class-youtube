@@ -26,7 +26,7 @@ class VideoPlayer extends Component {
             display_control: true,
             initial:true
         }
-        //Bind here
+
         this.onPlayerReady = this.onPlayerReady.bind(this)
         this.onPlayerStateChange = this.onPlayerStateChange.bind(this)
         this.stopVideo = this.stopVideo.bind(this)
@@ -42,11 +42,10 @@ class VideoPlayer extends Component {
             this.YT = window['YT'];
             this.reframed = false;
             this.player = new window['YT'].Player('player', {
-                height: "360",
-                width: "640",
+                height: "281",
+                width: "500",
                 playerVars: {autoplay: 0, 'controls': 0 },
-                origin: 'https://youtu.be/MengvWW7lgw',
-                videoId: 'MengvWW7lgw',
+                videoId: config.videoId,
                 events: {
                     'onReady': this.onPlayerReady,
                     'onStateChange': this.onPlayerStateChange
@@ -58,8 +57,7 @@ class VideoPlayer extends Component {
 
     onPlayerStateChange(e){
         if (e.data === window['YT'].PlayerState.PLAYING && !this.state.done){
-            // setTimeout(this.stopVideo, 6000)
-            console.log('On player state change!')
+            console.log('Video playing!')
         }
     }
 
@@ -135,28 +133,28 @@ class VideoPlayer extends Component {
           this.state.done? mess='d': mess='c'
       } else {
           this.controlsText="re-watch previous section"
-          mess='i'
+          this.state.initial? mess='in': mess='i'
       }
 
       let questions = <Questions questionNum={this.state.question} handleCorrect={this.handleCorrect}></Questions>
       let congrats = <UserMessage mess={mess}/>
       let controls = <Controls startVideoFrom={this.startVideoFrom} text={this.controlsText} initial={this.state.initial}/>
     return (
-      <div>
-          <div className="section">
-              <div id="player" className="centered"></div>
-          </div>
-          <div className="controlsContainer section">
+      <div className="videoComponent clearfix">
+          <div className="section1 clearfix">
               {
                   this.state.display_question === true?
                   questions:null
               }
               {
-                  this.state.display_control === true? controls: null
+                  this.state.display_control === true? congrats: null
               }
               {
-                  this.state.done===true? congrats:null
+                  this.state.display_control === true? controls: null
               }
+          </div>
+          <div className="section2 clearfix">
+              <div id="player"></div>
           </div>
       </div>
     );

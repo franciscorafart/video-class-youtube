@@ -18,10 +18,10 @@ class LiElement extends Component {
 
     render(){
         return (
-            <div>
+            <div className="liComponent clear">
                 <li>
-                    <span>{this.props.text}</span>
-                    <button onClick={this.handleClick}>Select</button>
+                    <span className="span">{this.props.text}</span>
+                    <button className="button" onClick={this.handleClick}>Select</button>
                 </li>
             </div>
         )

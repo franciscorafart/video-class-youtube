@@ -16,7 +16,7 @@ class Controls extends Component {
 
         return(
             <div>
-                <button onClick={this.props.startVideoFrom}>Press to {thisText}</button>
+                <button onClick={this.props.startVideoFrom} className="button mainButton">Press to {thisText}</button>
             </div>
         )
     }

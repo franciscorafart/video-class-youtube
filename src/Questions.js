@@ -28,8 +28,8 @@ class Questions extends Component {
 
     render(){
         return(
-            <div className="questionBox">
-                <h2 className="question">{this.currentQuestion.question}</h2>
+            <div className="questionBox clearfix">
+                <h2 className="question centered">Question {this.props.questionNum+1}: {this.currentQuestion.question}</h2>
                 <ul>
                     {
                         this.currentQuestion.alternatives.map((alt) =>
