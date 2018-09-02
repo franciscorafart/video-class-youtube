@@ -1,6 +1,7 @@
 {
   "name": "video-class",
   "srcapi": "https://www.youtube.com/iframe_api",
+  "host": "https://www.youtube.com",
   "height": "360",
   "width": "640",
   "videoId": "MengvWW7lgw",
@@ -22,7 +23,7 @@
           "alternatives": [
               {"text":"Your feet", "id":"first"},
               {"text":"The ground", "id":"second"},
-              {"text":"Your abdominal cavity", "id":"third"},
+              {"text":"Your whole abdominal cavity", "id":"third"},
               {"text":"The diaphram", "id":"fourth"}
           ],
           "correct": "third",
@@ -54,7 +55,7 @@
           "incorrect_sec": 93
       },
       {
-          "question":"Why is relaxing important?",
+          "question":"Why is stress management important?",
           "alternatives": [
               {"text":"Nobody likes working with stressed divas", "id":"first"},
               {"text":"So that your diaphram can control your air properly", "id":"second"},
@@ -62,7 +63,7 @@
               {"text":"Because Ken Tamplin says so", "id":"fourth"}
           ],
           "correct": "second",
-          "correct_sec": 169,
+          "correct_sec": 159,
           "incorrect_sec": 123
       },
       {
@@ -74,8 +75,8 @@
               {"text":"Not relaxing and overthinking the notes", "id":"fourth"}
           ],
           "correct": "fourth",
-          "correct_sec": 202,
-          "incorrect_sec": 169
+          "correct_sec": 200,
+          "incorrect_sec": 159
       }
   ]
 }

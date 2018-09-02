@@ -30,7 +30,7 @@ class Questions extends Component {
         return(
             <div className="questionBox clearfix">
                 <h2 className="question centered">Question {this.props.questionNum+1}: {this.currentQuestion.question}</h2>
-                <ul>
+                <ul className="ulBox">
                     {
                         this.currentQuestion.alternatives.map((alt) =>
 

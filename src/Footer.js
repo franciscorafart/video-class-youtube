@@ -6,7 +6,7 @@ class Footer extends Component{
       <footer className="footer clearfix">
         <span className="span">Contact Us</span>
         <span className="clear span">Bercli University of Musicianship</span>
-        <span className="clear span"><a href="#">bercli.org</a></span>
+        <span className="clear span"><a href="https://github.com/franciscorafart/">bercli.org</a></span>
       </footer>
     )
   }

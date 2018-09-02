@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 class UserMessage extends Component {
-    constructor(props){
-        super(props)
-    }
-
+    
     render(){
         let message
 

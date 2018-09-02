@@ -46,6 +46,7 @@ class VideoPlayer extends Component {
                 width: "500",
                 playerVars: {autoplay: 0, 'controls': 0 },
                 videoId: config.videoId,
+                host: config.host,
                 events: {
                     'onReady': this.onPlayerReady,
                     'onStateChange': this.onPlayerStateChange
@@ -139,21 +140,25 @@ class VideoPlayer extends Component {
       let questions = <Questions questionNum={this.state.question} handleCorrect={this.handleCorrect}></Questions>
       let congrats = <UserMessage mess={mess}/>
       let controls = <Controls startVideoFrom={this.startVideoFrom} text={this.controlsText} initial={this.state.initial}/>
+      let noQuestions = <div><h3 className="centered">Video playing...</h3></div>
     return (
       <div className="videoComponent clearfix">
           <div className="section1 clearfix">
               {
                   this.state.display_question === true?
-                  questions:null
+                    questions:
+                    this.state.display_control === true?
+                        null:
+                        noQuestions
               }
               {
-                  this.state.display_control === true? congrats: null
+                  this.state.display_control === true? congrats:null
               }
               {
                   this.state.display_control === true? controls: null
               }
           </div>
-          <div className="section2 clearfix">
+          <div className="section2 clearfix centered">
               <div id="player"></div>
           </div>
       </div>
