@@ -18,7 +18,7 @@
 	clear: both;
 }
 /* Center the container */
-#container {
+.container {
 	width: 960px;
 	margin: auto;
 }

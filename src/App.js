@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <div>
           <Header/>
-          <Body id="container" className="clearfix"/>
+          <Body className="container clearfix"/>
           <Footer/>
       </div>
     );
