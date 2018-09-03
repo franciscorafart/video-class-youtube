@@ -4,8 +4,9 @@ import Controls from './Controls'
 import UserMessage from './UserMessage'
 import config from './configs/m_choice_config.json'
 import './App.css';
+import './Interface.css';
 
-class VideoPlayer extends Component {
+class Interface extends Component {
 
     constructor(props){
         super(props)
@@ -13,11 +14,6 @@ class VideoPlayer extends Component {
         this.timedListener = null
         this.correct_answer = false
         this.controlsText = 'start video'
-
-        const script = document.createElement("script");
-        script.src = config.srcapi;
-        script.async = true;
-        document.body.appendChild(script);
 
         this.state = {
             done: false,
@@ -34,11 +30,17 @@ class VideoPlayer extends Component {
         this.checkTime = this.checkTime.bind(this)
         this.startVideoFrom = this.startVideoFrom.bind(this)
         this.handleCorrect = this.handleCorrect.bind(this)
+
+        //Youtube player api configuration
+        const script = document.createElement("script");
+        script.src = config.srcapi;
+        script.async = true;
+        document.body.appendChild(script);
     }
 
     componentDidMount () {
-
-        window['onYouTubeIframeAPIReady'] = (e) => {
+        //Attach Youtube player
+        window['onYouTubeIframeAPIReady'] = () => {
             this.YT = window['YT'];
             this.reframed = false;
             this.player = new window['YT'].Player('player', {
@@ -71,6 +73,8 @@ class VideoPlayer extends Component {
     }
 
     checkTime(){
+        //Function that checks the current playing time of the video,
+        //To control pause and play automatically.
         let upperBound = config.questions[this.state.question].correct_sec
         let current = this.player.getCurrentTime()
 
@@ -80,7 +84,7 @@ class VideoPlayer extends Component {
             this.setState({display_question: true})
         }
     }
-
+    //function that handles user's answer
     handleCorrect(correct){
         this.correct_answer = correct
 
@@ -91,17 +95,18 @@ class VideoPlayer extends Component {
     }
 
     startVideoFrom(){
-        //extract correct and incorrect time
+
         let sec = null
         let nextQuestion = this.state.question
 
+        //extract starting points for correct and incorrect answers from config file
         if (this.correct_answer){
-            sec = config.questions[this.state.question].correct_sec
+            sec = config.questions[nextQuestion].correct_sec
             nextQuestion+=1
         }
         else
-            sec = config.questions[this.state.question].incorrect_sec
-        console.log('sec', sec, 'nextQuestion',nextQuestion)
+            sec = config.questions[nextQuestion].incorrect_sec
+
         if (nextQuestion >= config.questions.length){
             this.stopVideo()
             this.setState({done: true})
@@ -123,8 +128,6 @@ class VideoPlayer extends Component {
     onPlayerReady(e){
         e.target.seekTo(0, true)
         this.pauseVideo()
-        // e.target.playVideo()
-        // this.timedListener = setInterval(this.checkTime, 1000)
     }
 
   render() {
@@ -141,9 +144,12 @@ class VideoPlayer extends Component {
       let congrats = <UserMessage mess={mess}/>
       let controls = <Controls startVideoFrom={this.startVideoFrom} text={this.controlsText} initial={this.state.initial}/>
       let noQuestions = <div><h3 className="centered">Video playing...</h3></div>
+
     return (
       <div className="videoComponent clearfix">
           <div className="section1 clearfix">
+              {/* Conditional rendering of controls, questions and messages */}
+
               {
                   this.state.display_question === true?
                     questions:
@@ -158,6 +164,8 @@ class VideoPlayer extends Component {
                   this.state.display_control === true? controls: null
               }
           </div>
+
+          {/* Youtube Player */}
           <div className="section2 clearfix centered">
               <div id="player"></div>
           </div>
@@ -166,4 +174,4 @@ class VideoPlayer extends Component {
   }
 }
 
-export default VideoPlayer;
+export default Interface;

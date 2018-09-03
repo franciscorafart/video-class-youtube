@@ -14,12 +14,10 @@ class Questions extends Component {
 
     componentWillMount(){
         this.currentQuestion = config.questions[this.props.questionNum]
-        console.log(this.currentQuestion)
     }
 
     handleAnswer(e){
         if (e === this.currentQuestion.correct){
-            console.log("correct answer!")
             this.props.handleCorrect(true)
         } else {
             this.props.handleCorrect(false)

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 
-//This is a component. Reusable pieces of UI
 class Header extends Component {
   render() {
     return (
-      <header className="header centerd">
+      <header className="header">
         <h1 className="centered">Online Music Lessons App</h1>
       </header>
     )

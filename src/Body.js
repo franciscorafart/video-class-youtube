@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import VideoPlayer from './VideoPlayer'
+import Interface from './Interface'
 import './App.css';
 
 class Body extends Component {
   render() {
     return (
       <div>
-          <VideoPlayer></VideoPlayer>
+          <Interface></Interface>
       </div>
     );
   }

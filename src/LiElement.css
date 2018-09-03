@@ -1,0 +1,19 @@
+.liComponent{
+  height: 50px;
+  width: 50%;
+  margin: 10px 25% 10px 25%;
+  list-style:lower-roman;
+}
+.liComponent li{
+    height: 60px;
+    padding-top: 10px;
+}
+.liComponent span{
+    margin: 40px 20px 20px 20px;
+    margin-top: 20px;
+}
+.liComponent button{
+    float: right;
+    clear: none;
+    margin-top: -5px;
+}

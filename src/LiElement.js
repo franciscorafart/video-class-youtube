@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './LiElement.css'
 
 class LiElement extends Component {
     constructor(props){
@@ -6,13 +7,8 @@ class LiElement extends Component {
 
         this.handleClick = this.handleClick.bind(this)
     }
-    componentDidMount(){
-        console.log(this.props.identifier)
-        console.log(this.props.text)
-    }
 
     handleClick(e){
-        console.log(this.props.identifier)
         this.props.handleAnswer(this.props.identifier)
     }
 

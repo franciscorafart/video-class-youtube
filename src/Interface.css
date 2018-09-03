@@ -1,0 +1,40 @@
+.section1, .section2 {
+    min-height: 400px;
+    padding: 60px 10px 0 10px;
+    background-color: #c0d6e4;
+    border: 1px solid gray;
+    border-style: dotted;
+}
+.section1 {
+    width: 50%;
+    display: block;
+    float: left;
+}
+.section2 {
+    width: 50%;
+    display: block;
+    float: left;
+}
+.videoComponent {
+    padding: 120px 0 120px 0;
+}
+.button {
+    width: 55px;
+    min-height: 25px;
+    background-color: #66cdaa;
+    color: white;
+    font-size: 0.8em;
+}
+.mainButton {
+    width: 30%;
+    margin: 40px 35% 40px 35%;
+    display: block;
+    font-size: 1.2em;
+}
+
+/*Responsiveness*/
+@media only screen and (max-width:900px){
+    .section1, .section2{
+        width: 100%;
+    }
+}
