@@ -1,8 +1,12 @@
 #Online video learning App - prototype.
-The app plays an instructional video an gives multiple choice questions as the video progresses.
-You're only able to make progress if you answer the questions correctly.
+The app plays an instructional video from youtube and gives multiple choice questions
+as the video progresses. You're only able to make progress if you answer the questions correctly.
 
-Technology used:
+#Configuration
+The video played, questions displayed, and times of pause and play are configured on a Json file
+in src/configs
+
+#Technology used:
 React, Youtube player API, Javascript, CSS
 
 #How to Run
